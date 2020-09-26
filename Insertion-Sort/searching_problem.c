@@ -1,6 +1,6 @@
 #include <stdio.h>
 /* Consider the searching problem: 
-   Input: A sequence of n numbers A = {a1, a2, ..., an} and a value n.
+   Input: A sequence of n numbers A = {a1, a2, ..., an} and a value v.
    Output: An index i such that v = A[i] or the special value N if v does not
    appear in A.
    ·Note: index in A goes from 0-n-1, given the exmaple the index from a1 is 0 
