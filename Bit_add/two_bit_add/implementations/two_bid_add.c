@@ -1,60 +1,89 @@
 #include <stdio.h>
-/*
-  Consider the problem of adding two n-bit binary integers, 
-  stored in two n-element array A and B. 
-  The sum of the two integers should be stored in binary form in an 
-  (n+1)-element array C. 
-  State the problem formally and write pseudocode for adding the two integers.
+
+/**
+ *Consider the problem of adding two n-bit binary integers, 
+ *stored in two n-element array A and B. 
+ *The sum of the two integers should be stored in binary form in an 
+ *(n+1)-element array C. 
+ *State the problem formally and write pseudocode for adding the two integers.
+ ****************************************************************************
+ *This program reads the binary integers with spaces.
+ ****************************************************************************
+ *Example:
+ *n = 3
+ *A:   1 0 1 = 5
+ *B:   0 1 0 = 2
+ *C: 0 1 1 1 = 7
 */
-int suma(int a, int b);
-int aux;
+
+void two_bit_add(int A[], int B[], int n);
+int binary_add(int a, int b, int aux[]);
+void print_C(int C[], int n);
+
 void main(int argc, char *argv[]){
   int n;
   printf("n:");
   scanf("%d", &n);
 
-  int A[n];
-  int B[n];
-  int C[n+1];
-  int j = n;
-  
-  printf("A:   ");
-  for(int i = 0; i < n; i++)
-    scanf("%d", &A[i]);
-  printf("B:   ");
-  for(int i = 0; i < n; i++)
-    scanf("%d", &B[i]);
-  aux = 0;
+  int A[n-1];
+  int B[n-1];
 
-  //Start:
-  for(int i = n-1; i >= 0; i--, j--){
-    C[j] = suma(A[i], B[i]);
-  }
-  C[0] = aux;
-  //end
-  //printing the result:
-  printf("C: ");
-  for(int i = 0; i < n+1; i++)
-    printf("%d ",C[i]);
-  printf("\n");
+  printf("A:   ");
+  for(int i = n - 1; i >= 0; i--)
+    scanf("%d", &A[i]);
+
+  printf("B:   ");
+  for(int i = n - 1; i >= 0; i--)
+    scanf("%d", &B[i]);
   
+  two_bit_add(A, B, n);
 }
 
-int suma(int a, int b){
-  if(a + b + aux == 2){
-    aux = 1;
+void two_bit_add(int A[], int B[], int n){
+  int C[n];
+  int aux[1] = {0};
+
+  for(int i = 0; i < n; i++)
+    C[i] = binary_add(A[i], B[i], aux);
+  C[n] = aux[0];
+  print_C(C, n);
+}
+
+int binary_add(int a, int b, int aux[]){
+  /*if(a + b + aux[0] == 0){
+    aux[0] = 0;
     return 0;
   }
-  if(a + b + aux == 3){
-    aux = 1;
+  if(a + b + aux[0] == 1){
+    aux[0] = 0;
     return 1;
   }
-  if(a + b + aux == 1){
-    aux = 0;
-    return 1;
-  }
-  if( a + b + aux == 0){
-    aux = 0;
+  if(a + b + aux[0] == 2){
+    aux[0] = 1;
     return 0;
   }
+  if(a + b + aux[0] == 3){
+    aux[0] = 1;
+    return 1;
+    }  */
+  
+  int sum = a + b + aux[0];
+  
+  if(sum >= 2)
+    aux[0] = 1;
+  else aux[0] = 0;
+    
+  if(sum % 2 == 0)
+    return 0;
+  
+  return 1;
+}
+
+void print_C(int C[], int n){
+  printf("C: ");
+  
+  for(int i = n; i >= 0; i--)
+    printf("%d ",C[i]);
+  
+  printf("\n");
 }

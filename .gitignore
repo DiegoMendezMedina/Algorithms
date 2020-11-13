@@ -1,7 +1,0 @@
-*.out
-*.aux
-*.log
-*.tex
-*.tex~
-*.c~
-*.gitignore~
