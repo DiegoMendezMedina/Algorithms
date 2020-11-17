@@ -11,12 +11,12 @@
  ****************************************************************************
  *Example:
  *n = 3
- *A:   1 0 1 = 5
- *B:   0 1 0 = 2
- *C: 0 1 1 1 = 7
+ *A:   1 0 1 = 5_{10}
+ *B:   0 1 0 = 2_{10}
+ *C: 0 1 1 1 = 7_{10}
 */
 
-void two_bit_add(int A[], int B[], int n);
+void two_bit_add(int A[], int B[], int C[], int n);
 int binary_add(int a, int b, int aux[]);
 void print_C(int C[], int n);
 
@@ -27,7 +27,8 @@ void main(int argc, char *argv[]){
 
   int A[n-1];
   int B[n-1];
-
+  int C[n];
+  
   printf("A:   ");
   for(int i = n - 1; i >= 0; i--)
     scanf("%d", &A[i]);
@@ -36,19 +37,25 @@ void main(int argc, char *argv[]){
   for(int i = n - 1; i >= 0; i--)
     scanf("%d", &B[i]);
   
-  two_bit_add(A, B, n);
+  two_bit_add(A, B, C, n);
+  print_C(C, n);
 }
 
-void two_bit_add(int A[], int B[], int n){
-  int C[n];
+void two_bit_add(int A[], int B[], int C[], int n){
   int aux[1] = {0};
 
   for(int i = 0; i < n; i++)
     C[i] = binary_add(A[i], B[i], aux);
   C[n] = aux[0];
-  print_C(C, n);
 }
 
+/**
+ * binary_add: returns the binary number result of adding the two binary numbers *            received and saves the carrying on the aux array. 
+ *
+ * @param a,b: binary numbers.
+ * @param aux[] : array of length one, used for the add carrying.
+ * @return returns the binary number result of adding a and b.
+ */
 int binary_add(int a, int b, int aux[]){
   /*if(a + b + aux[0] == 0){
     aux[0] = 0;
@@ -73,12 +80,16 @@ int binary_add(int a, int b, int aux[]){
     aux[0] = 1;
   else aux[0] = 0;
     
-  if(sum % 2 == 0)
+  if(sum == 2)
     return 0;
   
   return 1;
 }
 
+/**
+ * print_C: prints on the console the array with the result of the 
+            two_binary_add.
+ */
 void print_C(int C[], int n){
   printf("C: ");
   

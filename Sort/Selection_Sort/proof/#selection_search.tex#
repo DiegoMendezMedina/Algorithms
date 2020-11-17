@@ -1,0 +1,40 @@
+\documentclass[12pt, twoside, a4paper]{article}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{americanrose}{rgb}{1.0, 0.01, 0.24}
+\hypersetup{
+  colorlinks=true,
+  filecolor=red,      
+  urlcolor= blue,
+}
+\begin{document}
+\begin{center}
+  {\large \bfseries Selection sort algorithm \par}
+\end{center}
+Consider the searching problem:  \\
+\begin{itemize}
+\item Input: A sequence of $n$ numbers $A = \{a_1, a_2, ..., a_n\}$ and a value $v$.
+\item Output: An index i such that v = A[i] or the special value N if v does not appear in A.
+\end{itemize}
+You can find the implementation \href{https://github.com/DiegoMendezMedina/C_Algorithms/blob/master/Search/linear_searching/implementations/searching_problem.c}{\textbf{here}} or go to the next url: \url{https://github.com/DiegoMendezMedina/C_Algorithms/blob/master/Search/linear_searching/implementations/searching_problem.c}. \\ \\
+  \begin{center}
+    {\large \textbf{Pseudocode} \par}
+  \end{center}
+  \begin{enumerate}
+  \item \textbf{for} i = 0 \textbf{to} n-1
+  \item \hspace{.5cm} \textbf{if} $v == A[i]$
+  \item \hspace{1cm} return i
+  \item  return 'N' \\
+  \end{enumerate}
+  \begin{center}
+    {\large \textbf{Proof} \par}
+  \end{center}
+  \textbf{Loop invariant:}\\ At the start of each iteration of the \textbf{for} loop (lines 1-3), $v$ was not found on the previous \textbf{i} values.  \textbf{if} $v == A[i]$, \textbf{i} is returned and the \textbf{for} loop breaks.
+  Otherwhise at the end of the loop \textbf{'N'} is returned. \\ \\
+  \textbf{Initialization:} \\
+  When $i = 0$ there are no previous \textbf{i} values.\\ \textbf{if} $A[0] = v$; then \textbf{i} is return and the \textbf{for} loop breaks.\\ \\
+  \textbf{Maintenance:} \\
+  There's another iteration which means that for all the previous value of \textbf{i} $v$ was not found. If for the current value of \textbf{i} happens that $A[i] = v$ then \textbf{i} is returned and the \textbf{for} loop breaks.\\ \\
+  \textbf{Termination:}\\
+  When the loop finishes \textbf{i} had browsed all the possible positions of the array and $v$ was not found; then \textbf{'N'} is returned.
+\end{document}
