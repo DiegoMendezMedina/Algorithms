@@ -1,4 +1,0 @@
-
-
-linear_search :: [a] -> Int -> Int
-

@@ -50,7 +50,8 @@ void two_bit_add(int A[], int B[], int C[], int n){
 }
 
 /**
- * binary_add: returns the binary number result of adding the two binary numbers *            received and saves the carrying on the aux array. 
+ * binary_add: returns the binary number result of adding the two binary number
+ *            received and saves the carrying on the aux array. 
  *
  * @param a,b: binary numbers.
  * @param aux[] : array of length one, used for the add carrying.
@@ -97,4 +98,4 @@ void print_C(int C[], int n){
     printf("%d ",C[i]);
   
   printf("\n");
-}
+}x
