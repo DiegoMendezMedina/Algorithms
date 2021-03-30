@@ -1,0 +1,93 @@
+\documentclass[12pt, twoside, a4paper]{article}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath}
+\definecolor{americanrose}{rgb}{1.0, 0.01, 0.24}
+\hypersetup{
+  colorlinks = true,
+  filecolor = red,      
+  urlcolor = blue,
+}
+\begin{document}
+\begin{center}
+  {\large \bfseries two bit add algorithm \par}
+\end{center}
+  Consider the two bit add problem:
+\begin{itemize}
+\item Input:\\
+  Two $n-$bit binary integers, stored in two $n-$element array $A$ and $B$.
+\item Output:\\
+  The sum of the two integers should be stored in binary form in an
+  $(n+1)-$element array $C$.  
+\end{itemize}
+You can find the implementation \href{https://github.com/DiegoMendezMedina/C_Algorithms/tree/master/Bit_add/two_bit_add/implementations}{\textbf{here}} or go to the next url: \url{https://github.com/DiegoMendezMedina/C_Algorithms/tree/master/Bit_add/two_bit_add/implementations}. \\ \\
+\begin{center}
+  {\large \textbf{Pseudocode} \par}
+\end{center}
+\textbf{two\_bit\_add}(A[ ], B[ ])
+\begin{enumerate}
+\item $aux[1] = 0$
+\item \textbf{for} $i = 1$ \textbf{to} $n$
+\item \hspace{.5cm} $C[i] = binary\_add(A[i], B[i], aux[1])$
+\item  $C[n+1] = aux$
+\end{enumerate}
+\vspace{.5cm}
+\textbf{binary\_add}(a, b, aux[1])
+\begin{enumerate}
+\item $sum = a + b + aux[1]$
+\item \textbf{if} $sum >= 2$
+\item \hspace{.5cm} $aux[1] = 1$
+\item \textbf{else} $aux[1] = 0$
+\item \textbf{if} $sum == 2$
+\item \hspace{.5cm} \textbf{return} 0
+\item \textbf{return} 1
+\end{enumerate}
+\newpage
+\begin{center}
+    {\large \textbf{Proof} \par}
+  \end{center}
+    \textbf{binary\_add}\\
+    This algorithm returns the binary number result of adding the two binary numbers received and saves the carrying on the aux array.\\
+    There are four different cases fora two binary add:
+    \begin{align*}
+      &\hspace{.5cm}1      &    &\hspace{.5cm}1  &  &\hspace{.5cm}0  &  &\hspace{.5cm}0\\
+      \textbf{+}&\hspace{.5cm}1     &   \textbf{+}&\hspace{.5cm}0  & \textbf{+}&\hspace{.5cm}1  & \textbf{+}&\hspace{.5cm}0\\
+      &\rule{1.2cm}{.1cm} &&\rule{1.2cm}{.1cm}&&\rule{1.2cm}{.1cm}&&\rule{1.2cm}{.1cm}\\
+      &\textcolor{blue}{\textbf{1}}\hspace{.25cm}\textcolor{red}{\textbf{0}} &&\textcolor{blue}{\textbf{0}}\hspace{.25cm}\textcolor{red}{\textbf{1}} && \textcolor{blue}{\textbf{0}}\hspace{.25cm}\textcolor{red}{\textbf{1}} && \textcolor{blue}{\textbf{0}}\hspace{.25cm}\textcolor{red}{\textbf{0}}
+    \end{align*}
+    Now lets see the binary add with carrying(purple):
+    \begin{align*}
+      &\hspace{.5cm}\textcolor{purple}{\textbf{0}}      &    &\hspace{.5cm}\textcolor{purple}{\textbf{0}}  &  &\hspace{.5cm}\textcolor{purple}{\textbf{0}}  &  &\hspace{.5cm}\textcolor{purple}{\textbf{0}}\\
+      &\hspace{.5cm}1      &    &\hspace{.5cm}1  &  &\hspace{.5cm}0  &  &\hspace{.5cm}0\\
+      \textbf{+}&\hspace{.5cm}1     &   \textbf{+}&\hspace{.5cm}0  & \textbf{+}&\hspace{.5cm}1  & \textbf{+}&\hspace{.5cm}0\\
+      &\rule{1.2cm}{.1cm} &&\rule{1.2cm}{.1cm}&&\rule{1.2cm}{.1cm}&&\rule{1.2cm}{.1cm}\\
+      &\textcolor{blue}{\textbf{1}}\hspace{.25cm}\textcolor{red}{\textbf{0}} &&\textcolor{blue}{\textbf{0}}\hspace{.25cm}\textcolor{red}{\textbf{1}} && \textcolor{blue}{\textbf{0}}\hspace{.25cm}\textcolor{red}{\textbf{1}} && \textcolor{blue}{\textbf{0}}\hspace{.25cm}\textcolor{red}{\textbf{0}}
+    \end{align*}
+    \begin{align*}
+      &\hspace{.5cm}\textcolor{purple}{\textbf{1}}      &    &\hspace{.5cm}\textcolor{purple}{\textbf{1}}  &  &\hspace{.5cm}\textcolor{purple}{\textbf{1}}  &  &\hspace{.5cm}\textcolor{purple}{\textbf{1}}\\
+      \textbf{+}&\hspace{.5cm}1      &    \textbf{+}&\hspace{.5cm}1  &  \textbf{+}&\hspace{.5cm}0  &  \textbf{+}&\hspace{.5cm}0\\
+      &\rule{1.2cm}{.1cm} &&\rule{1.2cm}{.1cm}&&\rule{1.2cm}{.1cm}&&\rule{1.2cm}{.1cm}\\
+      &\textcolor{blue}{\textbf{1}}\hspace{.25cm}\textbf{0} &&\textcolor{blue}{\textbf{1}}\hspace{.25cm}\textbf{0} && \textcolor{blue}{\textbf{0}}\hspace{.25cm}\textbf{1} && \textcolor{blue}{\textbf{0}}\hspace{.25cm}\textbf{1}\\
+      \textbf{+}&\hspace{.5cm}1     &   \textbf{+}&\hspace{.5cm}0  & \textbf{+}&\hspace{.5cm}1  & \textbf{+}&\hspace{.5cm}0\\
+      &\rule{1.2cm}{.1cm} &&\rule{1.2cm}{.1cm}&&\rule{1.2cm}{.1cm}&&\rule{1.2cm}{.1cm}\\
+      &\textcolor{blue}{\textbf{1}}\hspace{.25cm}\textcolor{red}{\textbf{1}} &&\textcolor{blue}{\textbf{1}}\hspace{.25cm}\textcolor{red}{\textbf{0}} && \textcolor{blue}{\textbf{1}}\hspace{.25cm}\textcolor{red}{\textbf{0}} && \textcolor{blue}{\textbf{0}}\hspace{.25cm}\textcolor{red}{\textbf{1}}
+    \end{align*}
+    Now it's clear to see :
+    \begin{itemize}
+    \item The carrying is 1 $\iff$ the $natural$ add between three digits is $\geq$ 2. (lines 2-3)
+    \item And zero otherwhise. (line 4)
+    \item Red numbers are returned only when the $natural$ add between three digits is zero. (line 5-6)
+    \item One is returned in other cases. (line 7)
+    \end{itemize}
+  \vspace{1cm} 
+  \textbf{two\_bit\_add}\\
+  \textbf{Loop invariant:}\\
+  For each iteration of the \textbf{for} loop on the $C$ array it's stored the binary add of the two digits with the same index of the array $A$ and $B$ (lines 2-3)\\
+  \textbf{Initialization:} \\
+  Since there haven't been any add yet, the aux is set on zero. (line 1)\\
+  On the first iteration on $C[1]$ is stored the binary add of $A[1]$, $B[1]$, and zero. The corresponding carrying is set on aux[1].\\
+  \textbf{Maintenance:} \\
+  For the rest of the iterations on C[i] is stored the binary add of $A[i]$, $B[i]$ and the carrying calculated on the previous binary add. The corresponding carrying is set on aux[1].\\
+  \textbf{Termination:}\\
+  When the loop finishes \textbf{i} had browsed $A$ and $B$ and stored the corresponding digits on $C$. There's still one digit that hasn't been stored in $C$, the carrying of the $n-1$ add. and that's done on the line 4.
+\end{document}

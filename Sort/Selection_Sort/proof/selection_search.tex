@@ -1,0 +1,60 @@
+\documentclass[12pt, twoside, a4paper]{article}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{americanrose}{rgb}{1.0, 0.01, 0.24}
+\hypersetup{
+  colorlinks=true,
+  filecolor=red,      
+  urlcolor= blue,
+}
+\begin{document}
+\begin{center}
+  {\large \bfseries Selection Sort Algorithm \par}
+\end{center}
+Consider sorting $n$ numbers stored in array A by first finding the smalles element of $A$ and exchanging it with element in $A[1]$. Then find the second
+smallest element of $A$, and exchange it with $A[2]$. Continue this manner
+ for the first $n-1$ elements of $A$.\\
+ You can find the implementation \href{https://github.com/DiegoMendezMedina/C_Algorithms/tree/master/Sort/Selection_Sort/implementations}{\textbf{here}}
+ or go to the next url: \url{https://github.com/DiegoMendezMedina/C_Algorithms/tree/master/Sort/Selection_Sort/implementations}. \\ \\
+  \begin{center}
+    {\large \textbf{Pseudocode} \par}
+  \end{center}
+  SELECTION-SORT(A)
+  \begin{enumerate}
+  \item \textbf{for} i = 1 \textbf{to} n-1
+  \item \hspace{.5cm} smallest = A[i]
+  \item \hspace{.5cm} k = i
+  \item \hspace{.5cm} \textbf{for} j = i \textbf{to} n
+  \item \hspace{1cm} \textbf{if} A[j] $<$ smallest
+  \item \hspace{1.5cm} smallest = A[j]
+  \item \hspace{1.5cm} k = j
+  \item \hspace{.5cm} \textbf{if} i !=  k
+  \item \hspace{1cm} $change(a, i, k)$
+  \end{enumerate}
+  CHANGE(A, b, c)
+  \begin{enumerate}
+  \item aux = A[b]
+  \item A[b] = A[c]
+  \item A[C] = aux
+  \end{enumerate}
+  \begin{center}
+    \newpage
+        {\large \textbf{Proof} \par}
+  \end{center}
+  \textbf{Loop invariant:}\\ At the start of each iteration of the \textbf{for} loop (lines 1-9), $A[1..i]$ is sorted. i.e the i-th element of the array is
+  greather for every previous numbers on the array.\\
+  On the second \textbf{for} loop (lines 4-7), the smallest number in A[i..n] is found \textbf{if} it's different from the one in the $i-$th position there's
+  a $change$. So now A[1...i+1] is also sorted.\\ \\
+  \textbf{Initialization:} \\ 
+  When $i = 1$ there are no previous \textbf{i} values.\\
+  The smallest number in A[1..n] is found and is changed with the one in
+   A[1]. Now A[1,2] is sorted. \\ \\
+  \textbf{Maintenance:} \\
+  There's another iteration which means that $A[1..i]$ is sorted. \\
+  The smallest number in A[i..n] is found and is changed with the one in
+  A[i]. Now A[1...i+1] is sorted. \\ \\
+  \textbf{Termination:}\\
+  $A[i...n-1]$ is sorted and $A[n]$ is greater than $A[n-1]$,
+  hence $A[1...n]$ is sorted.\\
+  
+\end{document}
