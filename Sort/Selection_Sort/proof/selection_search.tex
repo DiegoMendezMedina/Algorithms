@@ -1,11 +1,11 @@
 \documentclass[12pt, twoside, a4paper]{article}
 \usepackage{hyperref}
 \usepackage[dvipsnames]{xcolor}
-\definecolor{americanrose}{rgb}{1.0, 0.01, 0.24}
+\definecolor{rosamexicano}{rgb}{1.0, 0.01, 0.24}
 \hypersetup{
-  colorlinks=true,
-  filecolor=red,      
-  urlcolor= blue,
+  colorlinks = true,
+  filecolor = red,      
+  urlcolor = blue,
 }
 \begin{document}
 \begin{center}
@@ -14,8 +14,8 @@
 Consider sorting $n$ numbers stored in array A by first finding the smalles element of $A$ and exchanging it with element in $A[1]$. Then find the second
 smallest element of $A$, and exchange it with $A[2]$. Continue this manner
  for the first $n-1$ elements of $A$.\\
- You can find the implementation \href{https://github.com/DiegoMendezMedina/C_Algorithms/tree/master/Sort/Selection_Sort/implementations}{\textbf{here}}
- or go to the next url: \url{https://github.com/DiegoMendezMedina/C_Algorithms/tree/master/Sort/Selection_Sort/implementations}. \\ \\
+ You can find the implementation \href{https://github.com/DiegoMendezMedina/Algorithms/tree/master/Sort/Selection_Sort/implementations}{\textbf{here}}
+ or go to the next url: \url{https://github.com/DiegoMendezMedina/Algorithms/tree/master/Sort/Selection_Sort/implementations}. \\ \\
   \begin{center}
     {\large \textbf{Pseudocode} \par}
   \end{center}
@@ -28,7 +28,7 @@ smallest element of $A$, and exchange it with $A[2]$. Continue this manner
   \item \hspace{1cm} \textbf{if} A[j] $<$ smallest
   \item \hspace{1.5cm} smallest = A[j]
   \item \hspace{1.5cm} k = j
-  \item \hspace{.5cm} \textbf{if} i !=  k
+  \item \hspace{.5cm} \textbf{if} i $\neq$  k
   \item \hspace{1cm} $change(a, i, k)$
   \end{enumerate}
   CHANGE(A, b, c)
@@ -37,8 +37,8 @@ smallest element of $A$, and exchange it with $A[2]$. Continue this manner
   \item A[b] = A[c]
   \item A[C] = aux
   \end{enumerate}
+  \newpage
   \begin{center}
-    \newpage
         {\large \textbf{Proof} \par}
   \end{center}
   \textbf{Loop invariant:}\\ At the start of each iteration of the \textbf{for} loop (lines 1-9), $A[1..i]$ is sorted. i.e the i-th element of the array is
@@ -56,5 +56,4 @@ smallest element of $A$, and exchange it with $A[2]$. Continue this manner
   \textbf{Termination:}\\
   $A[i...n-1]$ is sorted and $A[n]$ is greater than $A[n-1]$,
   hence $A[1...n]$ is sorted.\\
-  
 \end{document}
