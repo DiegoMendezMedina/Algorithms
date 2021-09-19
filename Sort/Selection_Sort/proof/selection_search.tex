@@ -11,7 +11,7 @@
 \begin{center}
   {\large \bfseries Selection Sort Algorithm \par}
 \end{center}
-Consider sorting $n$ numbers stored in array A by first finding the smalles element of $A$ and exchanging it with element in $A[1]$. Then find the second
+Consider sorting $n$ numbers stored in array A by first finding the smallest element of $A$ and exchanging it with element in $A[1]$. Then find the second
 smallest element of $A$, and exchange it with $A[2]$. Continue this manner
  for the first $n-1$ elements of $A$.\\
  You can find the implementation \href{https://github.com/DiegoMendezMedina/Algorithms/tree/master/Sort/Selection_Sort/implementations}{\textbf{here}}
@@ -42,7 +42,7 @@ smallest element of $A$, and exchange it with $A[2]$. Continue this manner
         {\large \textbf{Proof} \par}
   \end{center}
   \textbf{Loop invariant:}\\ At the start of each iteration of the \textbf{for} loop (lines 1-9), $A[1..i]$ is sorted. i.e the i-th element of the array is
-  greather for every previous numbers on the array.\\
+  greater for every previous numbers on the array.\\
   On the second \textbf{for} loop (lines 4-7), the smallest number in A[i..n] is found \textbf{if} it's different from the one in the $i-$th position there's
   a $change$. So now A[1...i+1] is also sorted.\\ \\
   \textbf{Initialization:} \\ 
